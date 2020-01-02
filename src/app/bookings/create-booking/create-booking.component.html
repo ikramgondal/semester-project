@@ -1,0 +1,99 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{ selectedPlace.title }}</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="onCancel()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content text-center padding>
+    <form (ngSubmit)="onBookPlace()" #f="ngForm">
+        <ion-grid>
+            <ion-row>
+                <ion-col size-sm="6" offset-sm="3">
+                    <ion-item>
+                        <ion-label position="floating">First name</ion-label>
+                        <ion-input
+                            type="text"
+                            name="first-name"
+                            ngModel
+                            required
+                        ></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="6" offset-sm="3">
+                    <ion-item>
+                        <ion-label position="floating">Last name</ion-label>
+                        <ion-input
+                            type="text"
+                            name="last-name"
+                            ngModel
+                            required
+                        ></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="6" offset-sm="3">
+                    <ion-item>
+                        <ion-label position="floating"
+                            >Number of Guests</ion-label
+                        >
+                        <ion-select name="guests-number" [ngModel]="'2'">
+                            <ion-select-option value="1">1</ion-select-option>
+                            <ion-select-option value="2">2</ion-select-option>
+                            <ion-select-option value="3">3</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="6" size-sm="3" offset-sm="3">
+                    <ion-item>
+                        <ion-label position="floating">From</ion-label>
+                        <ion-datetime
+                            display-format="MMM DD YYYY"
+                            picker-format="YY MMM DD"
+                            name="date-from"
+                            [min]="selectedPlace.availableFrom.toISOString()"
+                            [max]="selectedPlace.availableTo.toISOString()"
+                            [ngModel]="startDate"
+                            required
+                            #startDateCtrl="ngModel"
+                        ></ion-datetime>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="6" size-sm="3" offset-sm="3">
+                    <ion-item>
+                        <ion-label position="floating">To</ion-label>
+                        <ion-datetime
+                            display-format="MMM DD YYYY"
+                            picker-format="YY MMM DD"
+                            name="date-to"
+                            [min]="startDateCtrl.value"
+                            [max]="selectedPlace.availableTo.toISOString()"
+                            [ngModel]="endDate"
+                            required
+                        ></ion-datetime>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="6" offset-sm="3">
+                    <ion-button
+                        type="submit"
+                        color="primary"
+                        expand="block"
+                        [disabled]="!f.valid || !datesValid()"
+                        >BOOK!</ion-button
+                    >
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

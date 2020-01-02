@@ -1,1 +1,1 @@
-# semester-project
+# ionic-booking-app
