@@ -56,7 +56,7 @@ export class CreateBookingComponent implements OnInit {
             },
             'confirm'
         );
-    }{}
+    }
 
     onCancel() {
         this.modalCtrl.dismiss(null, 'cancel');
