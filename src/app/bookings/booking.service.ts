@@ -4,7 +4,7 @@ import { take, map, tap, delay, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Booking } from './booking.model';
 import { AuthService } from '../auth/auth.service';
-
+// comment for commit test.
 interface BookingData {
     bookedFrom: string;
     bookedTo: string;
