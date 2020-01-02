@@ -14,7 +14,7 @@ interface BookingData {
     placeId: string;
     placeImage: string;
     placeTitle: string;
-    userId: string;
+    userId: string
 }
 
 @Injectable({
