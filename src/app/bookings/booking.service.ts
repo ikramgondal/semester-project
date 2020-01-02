@@ -31,7 +31,7 @@ export class BookingService {
     }
 
     addBooking(
-        
+        placeId: string,
         placeTitle: string,
         placeImage: string,
         firstName: string,
